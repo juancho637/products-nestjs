@@ -10,11 +10,11 @@ import { JwtPayload } from '../interfaces/jwt-payload.interface';
 import { User, UserDocument } from '../../users/schemas/user.schema';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
+export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     @InjectModel(User.name) private readonly userModel: Model<UserDocument>,
     @Inject(jwtConfig.KEY)
-    private jsonWebTokenConfig: ConfigType<typeof jwtConfig>,
+    protected jsonWebTokenConfig: ConfigType<typeof jwtConfig>,
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
