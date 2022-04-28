@@ -41,8 +41,8 @@ class EnvironmentValidations {
   JWT_SECRET: string;
 
   @IsNotEmpty()
-  @IsNumber()
-  JWT_EXPIRES_IN: number;
+  @IsString()
+  JWT_EXPIRES_IN: string;
 }
 
 export function validate(config: Record<string, unknown>) {
