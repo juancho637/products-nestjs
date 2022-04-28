@@ -1,6 +1,7 @@
 import { Controller, Post, Body, HttpCode } from '@nestjs/common';
 import { plainToClass } from 'class-transformer';
 import { AuthSerializer } from './auth.serializer';
+import { ApiTags } from '@nestjs/swagger';
 
 import { User } from '../users/schemas/user.schema';
 import { AuthService } from './auth.service';
@@ -8,6 +9,7 @@ import { LoginDto } from './dto/login.dto';
 import { RegisterDto } from './dto/register.dto';
 import { UsersSerializer } from '../users/users.serializer';
 
+@ApiTags('auth')
 @Controller('api/v1/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
